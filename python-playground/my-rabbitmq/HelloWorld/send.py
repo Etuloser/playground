@@ -1,3 +1,6 @@
+"""
+In the first tutorial we wrote programs to send and receive messages from a named queue
+"""
 import pika
 
 connection = pika.BlockingConnection(
