@@ -114,6 +114,7 @@ env.bak/
 venv.bak/
 .env.dev
 .env.prd
+conf.ini
 
 # Spyder project settings
 .spyderproject
