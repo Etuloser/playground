@@ -3,6 +3,9 @@ from configparser import ConfigParser
 from influxdb import InfluxDBClient
 import datetime
 import time
+from faker import Faker
+
+fk = Faker()
 
 
 class Pinflux:
@@ -48,17 +51,18 @@ if __name__ == '__main__':
         {
             "measurement": "mobile_log",
             "tags": {
-                "topic": "LA08_L_NBLOG",
-                "EventID": "PageLoad"
+                "domain": "www.360.com",
+                "errcode": 3,
             },
-            "time": datetime.datetime.utcnow(),
-            # "time_precision": "s",
+            "time": time.time_ns(),
             "fields": {
-                "ErrCode": 0,
-                "Url": "http://example.com"
+                "eventid": "PageLoad"
             }
         }
     ]
     pinflux.adds(json_body)
-    result = pinflux.client.query('select * from mobile_log;')
-    print("Result: {0}".format(result))
+    # result = pinflux.client.query('select * from mobile_log;')
+    # docs = result.get_points()
+    # for doc in docs:
+    #     print(doc)
+    # pinflux.client.drop_measurement('mobile_log')
