@@ -23,7 +23,6 @@ class DjangoJobViewSet(viewsets.ModelViewSet):
     serializer_class = DjangoJobSerializer
     permission_classes = [permissions.IsAuthenticated]
     queryset = DjangoJob.objects.all()
-    serializer = DjangoJobSerializer
 
     def create(self, request, *args, **kwargs):
         scheduler = BlockingScheduler(timezone=settings.TIME_ZONE)
